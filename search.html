@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Search Beneficiary</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Search Results</h1>
+
+    <p>
+        Search:
+        <strong>{{ query }}</strong>
+    </p>
+
+    <table>
+
+        <tr>
+
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Phone</th>
+            <th>Category</th>
+            <th>Assistance</th>
+            <th>Actions</th>
+
+        </tr>
+
+
+        {% for beneficiary in beneficiaries %}
+
+        <tr>
+
+            <td>{{ beneficiary["id"] }}</td>
+
+            <td>{{ beneficiary["name"] }}</td>
+
+            <td>{{ beneficiary["age"] }}</td>
+
+            <td>{{ beneficiary["gender"] }}</td>
+
+            <td>{{ beneficiary["phone"] }}</td>
+
+            <td>{{ beneficiary["category"] }}</td>
+
+            <td>{{ beneficiary["assistance"] }}</td>
+
+            <td>
+
+                <a href="/edit/{{ beneficiary['id'] }}">
+                    Edit
+                </a>
+
+                |
+
+                <a href="/delete/{{ beneficiary['id'] }}">
+                    Delete
+                </a>
+
+            </td>
+
+        </tr>
+
+        {% else %}
+
+        <tr>
+
+            <td colspan="8">
+                No beneficiaries found.
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    <br>
+
+    <a href="/">Back to Home</a>
+
+</div>
+
+</body>
+
+</html>

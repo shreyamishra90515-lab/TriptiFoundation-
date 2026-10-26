@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tripti Foundation - Beneficiary Management</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Tripti Foundation</h1>
+
+        <h2>Beneficiary Management System</h2>
+
+        <a href="/add" class="button">Add Beneficiary</a>
+
+        <form action="/search" method="GET" class="search-form">
+
+            <input
+                type="text"
+                name="query"
+                placeholder="Search by name, phone or category"
+            >
+
+            <button type="submit">Search</button>
+
+        </form>
+
+        <table>
+
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Phone</th>
+                <th>Category</th>
+                <th>Assistance</th>
+                <th>Actions</th>
+            </tr>
+
+            {% for beneficiary in beneficiaries %}
+
+            <tr>
+
+                <td>{{ beneficiary["id"] }}</td>
+
+                <td>{{ beneficiary["name"] }}</td>
+
+                <td>{{ beneficiary["age"] }}</td>
+
+                <td>{{ beneficiary["gender"] }}</td>
+
+                <td>{{ beneficiary["phone"] }}</td>
+
+                <td>{{ beneficiary["category"] }}</td>
+
+                <td>{{ beneficiary["assistance"] }}</td>
+
+                <td>
+
+                    <a href="/edit/{{ beneficiary['id'] }}">
+                        Edit
+                    </a>
+
+                    |
+
+                    <a href="/delete/{{ beneficiary['id'] }}"
+                       onclick="return confirm('Are you sure you want to delete this beneficiary?');">
+                        Delete
+                    </a>
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+</body>
+</html>

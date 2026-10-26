@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Edit Beneficiary</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Edit Beneficiary</h1>
+
+    <form method="POST">
+
+        <label>Name</label>
+
+        <input
+            type="text"
+            name="name"
+            value="{{ beneficiary['name'] }}"
+            required
+        >
+
+
+        <label>Age</label>
+
+        <input
+            type="number"
+            name="age"
+            value="{{ beneficiary['age'] }}"
+        >
+
+
+        <label>Gender</label>
+
+        <select name="gender">
+
+            <option
+                value="Male"
+                {% if beneficiary['gender'] == 'Male' %}selected{% endif %}
+            >
+                Male
+            </option>
+
+            <option
+                value="Female"
+                {% if beneficiary['gender'] == 'Female' %}selected{% endif %}
+            >
+                Female
+            </option>
+
+            <option
+                value="Other"
+                {% if beneficiary['gender'] == 'Other' %}selected{% endif %}
+            >
+                Other
+            </option>
+
+        </select>
+
+
+        <label>Phone</label>
+
+        <input
+            type="text"
+            name="phone"
+            value="{{ beneficiary['phone'] }}"
+        >
+
+
+        <label>Address</label>
+
+        <textarea name="address">{{ beneficiary['address'] }}</textarea>
+
+
+        <label>Category</label>
+
+        <select name="category">
+
+            <option value="Child"
+                {% if beneficiary['category'] == 'Child' %}selected{% endif %}>
+                Child
+            </option>
+
+            <option value="Family"
+                {% if beneficiary['category'] == 'Family' %}selected{% endif %}>
+                Family
+            </option>
+
+            <option value="Student"
+                {% if beneficiary['category'] == 'Student' %}selected{% endif %}>
+                Student
+            </option>
+
+            <option value="Woman"
+                {% if beneficiary['category'] == 'Woman' %}selected{% endif %}>
+                Woman
+            </option>
+
+            <option value="Community"
+                {% if beneficiary['category'] == 'Community' %}selected{% endif %}>
+                Community
+            </option>
+
+        </select>
+
+
+        <label>Assistance</label>
+
+        <select name="assistance">
+
+            <option value="Education">Education</option>
+
+            <option value="Medical">Medical</option>
+
+            <option value="Food">Food</option>
+
+            <option value="Clothing">Clothing</option>
+
+            <option value="Financial">Financial</option>
+
+            <option value="Skill Development">
+                Skill Development
+            </option>
+
+            <option value="Other">Other</option>
+
+        </select>
+
+
+        <button type="submit">
+            Update Beneficiary
+        </button>
+
+    </form>
+
+    <br>
+
+    <a href="/">Back to Home</a>
+
+</div>
+
+</body>
+
+</html>
